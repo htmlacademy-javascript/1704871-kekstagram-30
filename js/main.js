@@ -58,3 +58,6 @@ const getUserPost = () => ({
 
 const generateUsersDescriptions = () => Array.from({length: getRandomInteger(0, POST_COUNT)}, getUserPost);
 
+generateUsersDescriptions();
+
+
