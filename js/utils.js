@@ -17,10 +17,8 @@ const getRandomInteger = (min, max) => Math.floor(Math.random() * (max - min + 1
 
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
-const returnMessage = () => getRandomArrayElement(MESSAGES);
-
 const createMessage = () => {
-  const message = Array.from({length: getRandomInteger(1, 2)}, () => returnMessage);
+  const message = Array.from({length: getRandomInteger(1, 2)}, () => getRandomArrayElement(MESSAGES));
   return Array.from(new Set(message)).join(' ');
 };
 
@@ -28,7 +26,7 @@ const createComment = () => ({
   id: commentId++,
   avatar: `img/avatar-${getRandomInteger(AVATAR_MIN_COUNT, AVATAR_MAX_COUNT)}.svg`,
   message: createMessage(),
-  name: getRandomArrayElement(NAMES),
+  name: getRandomArrayElement(NAMES)
 });
 
 const createPost = () => ({
@@ -41,4 +39,5 @@ const createPost = () => ({
 
 const createPosts = () => Array.from({length: POST_COUNT}, createPost);
 
-createPosts();
+export {createPosts};
+
