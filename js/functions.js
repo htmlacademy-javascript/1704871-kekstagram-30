@@ -1,6 +1,3 @@
-const getLimit = (startTime, finishTime, startMeeting, duration) => {
+const getLimit = (startTime) => `ыы${startTime}`;
 
-}
-
-console.log(getLimit('08:00', '17:30', '14:00', 90));
-
+getLimit('дима');
