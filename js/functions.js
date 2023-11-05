@@ -9,3 +9,4 @@ const analiseMeetingTime = (startTime, finishTime, startMeeting, duration) => {
 };
 
 analiseMeetingTime('14:00', '17:30', '08:0', 90);
+

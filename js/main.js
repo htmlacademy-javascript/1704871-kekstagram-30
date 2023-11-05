@@ -1,4 +1,7 @@
-import {createPosts} from './utils.js';
+// import {createPosts} from './utils.js';
+import {pictureThumbnails} from './render.js';
 
-createPosts();
+// createPosts();
+
+pictureThumbnails();
 
