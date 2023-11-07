@@ -4,7 +4,10 @@ const pictureContainer = document.querySelector('.pictures');
 
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
-const pictureThumbnails = createPosts();
+const postsCopy = createPosts().slice();
+
+// const pictureThumbnails = createPosts();
+const pictureThumbnails = postsCopy;
 
 const pictureListFragment = document.createDocumentFragment();
 
@@ -18,4 +21,6 @@ pictureThumbnails.forEach(({url, likes, comments}) => {
 
 pictureContainer.append(pictureListFragment);
 
-export {pictureThumbnails};
+
+export {pictureThumbnails, postsCopy};
+
