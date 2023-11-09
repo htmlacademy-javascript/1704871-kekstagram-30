@@ -1,7 +1,3 @@
-// import {createPosts} from './utils.js';
-import {pictureThumbnails} from './render.js';
+import {getFullPhoto} from './full-foto.js';
 
-// createPosts();
-
-pictureThumbnails();
-
+getFullPhoto();

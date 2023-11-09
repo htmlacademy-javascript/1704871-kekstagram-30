@@ -39,5 +39,9 @@ const createPost = () => ({
 });
 
 const createPosts = () => Array.from({length: POST_COUNT}, createPost);
+// const createPosts = () => {
+
+//   Array.from({length: POST_COUNT}, createPost);
+// };
 
 export {createPosts};
