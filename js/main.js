@@ -1,3 +1,10 @@
-import {getFullPhoto} from './full-foto.js';
+import {postsCopy} from './render.js';
+import {renderGallery} from './full-photo.js';
+// import {renderFullSizePost} from './full-photo.js';
 
-getFullPhoto();
+renderGallery();
+// postsCopy();
+// renderFullSizePost();
+
+// console.log(createPosts());
+
