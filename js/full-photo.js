@@ -49,6 +49,9 @@ const createComment = (text, url) => {
 
 const renderCommentsByCount = (currentId, count) => {
   bigPictureCommentsList.innerHTML = '';
+  if (postsCopy[currentId].comments.length < count) {
+    count = postsCopy[currentId].comments.length;
+  }
   for (let i = 0; i < count; i++) {
     bigPictureCommentsList.appendChild(
       createComment(
