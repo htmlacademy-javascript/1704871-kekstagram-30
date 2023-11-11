@@ -1,4 +1,4 @@
-import {createPosts} from './utils.js';
+import {createPosts} from './data.js';
 
 const pictureContainer = document.querySelector('.pictures');
 
@@ -6,13 +6,11 @@ const pictureTemplate = document.querySelector('#picture').content.querySelector
 
 const postsCopy = createPosts().slice();
 
-// const pictureThumbnails = createPosts();
-const pictureThumbnails = postsCopy;
-
 const pictureListFragment = document.createDocumentFragment();
 
-pictureThumbnails.forEach(({url, likes, comments}) => {
+postsCopy.forEach(({url, likes, comments, id}) => {
   const pictureElement = pictureTemplate.cloneNode(true);
+  pictureElement.dataset.id = (id - 1);
   pictureElement.querySelector('.picture__img').src = url;
   pictureElement.querySelector('.picture__likes').textContent = likes;
   pictureElement.querySelector('.picture__comments').textContent = comments.length;
@@ -21,6 +19,5 @@ pictureThumbnails.forEach(({url, likes, comments}) => {
 
 pictureContainer.append(pictureListFragment);
 
-
-export {pictureThumbnails, postsCopy};
+export {postsCopy};
 
