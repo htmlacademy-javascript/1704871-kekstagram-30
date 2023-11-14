@@ -1,3 +1,3 @@
-import {renderGallery} from './full-photo.js';
+import {renderGallery} from './post/full-photo.js';
 
 renderGallery();
