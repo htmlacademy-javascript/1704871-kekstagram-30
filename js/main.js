@@ -1,3 +1,5 @@
-import {renderGallery} from './post/full-photo.js';
+import { createMiniatures } from './post/render.js';
+import { form } from './form/validate.js';
 
-renderGallery();
+createMiniatures();
+console.log(form);
