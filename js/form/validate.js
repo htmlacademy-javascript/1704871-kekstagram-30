@@ -34,7 +34,7 @@ const validateHashTags = (hashtags) => {
     return true;
   }
   allHashtags = Array.from(hashtags.trim().split(' '));
-  console.log(allHashtags);
+  // console.log(allHashtags);
   if (checkHashTagsCount(allHashtags)) {
     errorMessage = 'превышено количество хэш-тегов';
     return false;
