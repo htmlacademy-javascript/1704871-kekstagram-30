@@ -1,5 +1,6 @@
 import { createMiniatures } from './post/render.js';
-import { form } from './form/validate.js';
+import { validateForm } from './form/validate.js';
 
 createMiniatures();
-console.log(form);
+validateForm();
+// console.log(form);
