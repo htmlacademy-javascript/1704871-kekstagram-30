@@ -1,5 +1,5 @@
 import { createPosts } from './data.js';
-import { renderBigPicture } from './full-photo.js';
+import { renderBigPicture } from './render-full-photo.js';
 
 const pictureContainer = document.querySelector('.pictures');
 
