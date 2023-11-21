@@ -11,7 +11,7 @@ const cancelButton = document.querySelector('.big-picture__cancel');
 const commentContainer = document.querySelector('.social__comment');
 const commentText = document.querySelector('.social__text');
 const commentsLoadButton = document.querySelector('.social__comments-loader');
-const commentsCount = document.querySelector('.social__comment-count');
+// const commentsCount = document.querySelector('.social__comment-count');
 const commentsShownCount = document.querySelector('.social__comment-shown-count');
 const commentsTotalCount = document.querySelector('.social__comment-total-count');
 

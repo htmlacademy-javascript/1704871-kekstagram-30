@@ -1,3 +1,4 @@
+import {scalePicture} from './effects.js';
 import {isEscape} from '../utils/utils.js';
 import {addValidators, pristineReset, pristineValidate} from './validate.js';
 
@@ -44,6 +45,7 @@ const initForm = () => {
   formUploadInput.addEventListener('change', onUploadImage);
   form.addEventListener('submit', onFormSubmit);
   addValidators();
+  scalePicture();
 };
 
 export { initForm };
