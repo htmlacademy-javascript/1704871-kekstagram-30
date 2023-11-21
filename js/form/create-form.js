@@ -1,5 +1,6 @@
 import {scalePicture} from './scale-added-picture.js';
 import {isEscape} from '../utils/utils.js';
+import {initSlider} from './add-effects.js';
 import {addValidators, pristineReset, pristineValidate} from './validate-form.js';
 
 const form = document.querySelector('#upload-select-image');
@@ -46,6 +47,7 @@ const initForm = () => {
   form.addEventListener('submit', onFormSubmit);
   addValidators();
   scalePicture();
+  initSlider();
 };
 
 export { initForm };

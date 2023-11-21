@@ -25,4 +25,4 @@ const scalePicture = () => {
   scalePanel.addEventListener('click', onChangeScale);
 };
 
-export {scalePicture};
+export {scalePicture, uploadedImage};
