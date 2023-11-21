@@ -1,4 +1,4 @@
-import {getRandomInteger, getRandomArrayElement} from './utils.js';
+import {getRandomInteger, getRandomArrayElement} from '../utils/utils.js';
 
 const POST_COUNT = 25;
 const COMMENTS_MIN_COUNT = 0;
@@ -17,12 +17,14 @@ const createMessage = () => {
   const message = Array.from({length: getRandomInteger(1, 2)}, () => getRandomArrayElement(MESSAGES));
   return Array.from(new Set(message)).join(' ');
 };
+
 const createComment = () => ({
   id: commentId++,
   avatar: `img/avatar-${getRandomInteger(AVATAR_MIN_COUNT, AVATAR_MAX_COUNT)}.svg`,
   message: createMessage(),
   name: getRandomArrayElement(NAMES)
 });
+
 const createPost = () => ({
   id: postId,
   url: `photos/${postId++}.jpg`,
@@ -30,7 +32,7 @@ const createPost = () => ({
   description: getRandomArrayElement(DESCRIPTIONS),
   comments: Array.from({length: getRandomInteger(COMMENTS_MIN_COUNT, COMMENTS_MAX_COUNT)}, createComment)
 });
+
 const createPosts = () => Array.from({length: POST_COUNT}, createPost);
 
 export {createPosts};
-

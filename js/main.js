@@ -1,10 +1,5 @@
-import {postsCopy} from './render.js';
-import {renderGallery} from './full-photo.js';
-// import {renderFullSizePost} from './full-photo.js';
+import { createMiniatures } from './post/render-miniatures.js';
+import { initForm } from './form/form.js';
 
-renderGallery();
-// postsCopy();
-// renderFullSizePost();
-
-// console.log(createPosts());
-
+createMiniatures();
+initForm();

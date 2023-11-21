@@ -928,8 +928,7 @@ main {
 }
 
 .social__comment-count {
-  padding-top: 20px;
-  padding-left: 65px;
+  padding: 20px 0 20px 65px;
 }
 
 .social__comments-loader {
