@@ -1,6 +1,6 @@
-import {scalePicture} from './effects.js';
+import {scalePicture} from './scale-added-picture.js';
 import {isEscape} from '../utils/utils.js';
-import {addValidators, pristineReset, pristineValidate} from './validate.js';
+import {addValidators, pristineReset, pristineValidate} from './validate-form.js';
 
 const form = document.querySelector('#upload-select-image');
 const formUploadInput = document.querySelector('.img-upload__input');
