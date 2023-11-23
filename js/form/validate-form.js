@@ -16,14 +16,20 @@ const pristine = new Pristine(uploadForm, {
   errorTextParent: 'img-upload__field-wrapper',
   errorTextClass: 'img-upload__field-wrapper--error',
 });
+
 const createHashTags = (hashtagsString) => hashtagsString.trim().toLowerCase().split(' ').filter((hashtag) => hashtag);
+
 const isValidHashTags = (hashtagsString) => createHashTags(hashtagsString).every((hashtag) => HASHTAG_REGEX.test(hashtag));
+
 const isUniqueHashTags = (hashtagsString) => {
   const hashtags = createHashTags(hashtagsString);
   return hashtags.length === new Set(hashtags).size;
 };
+
 const isValidCount = (hashtagsString) => createHashTags(hashtagsString).length <= HASHTAG_COUNT;
+
 const isCorrectLength = (commentString) => commentString.length <= COMMENT_LENGTH;
+
 const addValidators = () => {
   pristine.addValidator(
     textHashTags,
@@ -54,7 +60,9 @@ const addValidators = () => {
     true
   );
 };
+
 const pristineReset = () => pristine.reset();
+
 const pristineValidate = () => pristine.validate();
 
 export {addValidators, pristineReset, pristineValidate};
