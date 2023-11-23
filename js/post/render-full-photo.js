@@ -11,11 +11,10 @@ const cancelButton = document.querySelector('.big-picture__cancel');
 const commentContainer = document.querySelector('.social__comment');
 const commentText = document.querySelector('.social__text');
 const commentsLoadButton = document.querySelector('.social__comments-loader');
-// const commentsCount = document.querySelector('.social__comment-count');
 const commentsShownCount = document.querySelector('.social__comment-shown-count');
 const commentsTotalCount = document.querySelector('.social__comment-total-count');
 
-let showenComments = 0;
+let shownComments = 0;
 let comments = [];
 
 const onCancelClick = () => {
@@ -29,7 +28,7 @@ const onEscapePress = (evt) => {
 };
 
 const setButtonState = () => {
-  commentsLoadButton.classList.toggle('hidden', showenComments >= comments.length);
+  commentsLoadButton.classList.toggle('hidden', shownComments >= comments.length);
 };
 
 const createComment = (comment) => {
@@ -42,9 +41,9 @@ const createComment = (comment) => {
 };
 
 const renderComments = (pictureComments) => {
-  pictureComments.slice(showenComments, showenComments + COMMENTS__SHOWN_COUNT).forEach((comment) => bigPictureComments.appendChild(createComment(comment)));
-  showenComments = Math.min(showenComments + COMMENTS__SHOWN_COUNT, pictureComments.length);
-  commentsShownCount.textContent = showenComments;
+  pictureComments.slice(shownComments, shownComments + COMMENTS__SHOWN_COUNT).forEach((comment) => bigPictureComments.appendChild(createComment(comment)));
+  shownComments = Math.min(shownComments + COMMENTS__SHOWN_COUNT, pictureComments.length);
+  commentsShownCount.textContent = shownComments;
   setButtonState();
 };
 
@@ -59,7 +58,7 @@ function hideModal(){
   cancelButton.removeEventListener('click', onCancelClick);
   document.removeEventListener('keydown', onEscapePress);
   commentsLoadButton.classList.remove('hidden');
-  showenComments = 0;
+  shownComments = 0;
 }
 
 function showModal() {
@@ -72,6 +71,7 @@ function showModal() {
 
 const createBigPicture = (picture) => {
   bigPictureImg.src = picture.url;
+  bigPictureImg.alt = picture.description;
   bigPictureLikes.textContent = picture.likes;
   commentsTotalCount.textContent = picture.comments.length;
   bigPictureDescription.textContent = picture.description;

@@ -1,4 +1,4 @@
-import {scalePicture} from './scale-added-picture.js';
+import {scalePicture, resetScale} from './scale-added-picture.js';
 import {isEscape} from '../utils/utils.js';
 import {initSlider} from './add-effects.js';
 import {addValidators, pristineReset, pristineValidate} from './validate-form.js';
@@ -9,20 +9,21 @@ const formEdit = document.querySelector('.img-upload__overlay');
 const formCancelUploadButton = document.querySelector('.img-upload__cancel');
 
 const onUploadCancelClick = () => {
-  hideModal();
+  closeModal();
 };
 
 const onDocumentKeydown = (evt) => {
   if (isEscape(evt)) {
-    hideModal();
+    closeModal();
   }
 };
 
-function hideModal() {
+function closeModal() {
   formEdit.classList.add('hidden');
   document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
   pristineReset();
+  resetScale();
   form.reset();
 }
 

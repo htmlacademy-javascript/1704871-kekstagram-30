@@ -1,28 +1,38 @@
-const scalePanel = document.querySelector('.img-upload__scale');
+const SCALE_STEP = 25;
+const MIN_SCALE = 25;
+const MAX_SCALE = 100;
+
+const minusButton = document.querySelector('.scale__control--smaller');
+const plusButton = document.querySelector('.scale__control--bigger');
+// const scalePanel = document.querySelector('.img-upload__scale');
 const scaleValue = document.querySelector('.scale__control--value');
 const uploadedImage = document.querySelector('.img-upload__preview img');
 
-let currentScale = 100;
+let currentScale = MAX_SCALE;
 
-const onChangeScale = (evt) => {
-  if (evt.target.classList.contains('scale__control--smaller')) {
-    currentScale = currentScale - 25;
-  }
-  if (evt.target.classList.contains('scale__control--bigger')) {
-    currentScale = currentScale + 25;
-  }
-  if (currentScale < 25) {
-    currentScale = 25;
-  }
-  if (currentScale > 100) {
-    currentScale = 100;
-  }
-  uploadedImage.setAttribute('style', `transform: scale(${currentScale}%);`);
+const changeScale = () => {
+  uploadedImage.style.transform = `scale(${currentScale}%)`;
   scaleValue.value = `${currentScale}%`;
 };
 
-const scalePicture = () => {
-  scalePanel.addEventListener('click', onChangeScale);
+const onMinusButtonClick = () => {
+  currentScale = Math.max(currentScale - SCALE_STEP, MIN_SCALE);
+  changeScale();
 };
 
-export {scalePicture, uploadedImage};
+const onPlusButtonClick = () => {
+  currentScale = Math.min(currentScale + SCALE_STEP, MAX_SCALE);
+  changeScale();
+};
+
+const resetScale = () => {
+  currentScale = MAX_SCALE;
+  changeScale();
+};
+
+const scalePicture = () => {
+  minusButton.addEventListener('click', onMinusButtonClick);
+  plusButton.addEventListener('click', onPlusButtonClick);
+};
+
+export {scalePicture, resetScale};

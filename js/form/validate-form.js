@@ -1,5 +1,3 @@
-
-
 const REG_EX = /^#[a-zа-я0-9]{1,19}$/i;
 const HASHTAGS_MAX_COUNT = 5;
 
