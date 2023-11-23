@@ -31,34 +31,10 @@ const isValidCount = (hashtagsString) => createHashTags(hashtagsString).length <
 const isCorrectLength = (commentString) => commentString.length <= COMMENT_LENGTH;
 
 const addValidators = () => {
-  pristine.addValidator(
-    textHashTags,
-    isValidHashTags,
-    NOT_VALID_HASHTAG,
-    1,
-    true
-  );
-  pristine.addValidator(
-    textHashTags,
-    isUniqueHashTags,
-    DUPLICATED_HASHTAG,
-    1,
-    true
-  );
-  pristine.addValidator(
-    textHashTags,
-    isValidCount,
-    INVALID_HASHTAG_COUNT,
-    1,
-    true
-  );
-  pristine.addValidator(
-    textComments,
-    isCorrectLength,
-    INVALID_COMMENT_LENGTH,
-    1,
-    true
-  );
+  pristine.addValidator(textHashTags, isValidHashTags, NOT_VALID_HASHTAG, 1, true);
+  pristine.addValidator(textHashTags, isUniqueHashTags, DUPLICATED_HASHTAG, 1, true);
+  pristine.addValidator(textHashTags, isValidCount, INVALID_HASHTAG_COUNT, 1, true);
+  pristine.addValidator(textComments, isCorrectLength, INVALID_COMMENT_LENGTH, 1, true);
 };
 
 const pristineReset = () => pristine.reset();
