@@ -2,6 +2,7 @@ import {scalePicture, resetScale} from './scale-added-picture.js';
 import {isEscape} from '../utils/utils.js';
 import {initSlider} from './add-effects.js';
 import {addValidators, pristineReset, pristineValidate} from './validate-form.js';
+import {uploadFormData} from './submit-form.js';
 
 const form = document.querySelector('#upload-select-image');
 const formUploadInput = document.querySelector('.img-upload__input');
@@ -35,7 +36,11 @@ function openModal() {
 
 const onFormSubmit = (evt) => {
   evt.preventDefault();
-  pristineValidate();
+  const isValid = pristineValidate();
+  if (isValid) {
+    const formData = new FormData(evt.target);
+    uploadFormData(formData);
+  }
 };
 
 const onUploadImage = () => {
@@ -51,4 +56,4 @@ const initForm = () => {
   initSlider();
 };
 
-export { initForm };
+export { initForm, closeModal };

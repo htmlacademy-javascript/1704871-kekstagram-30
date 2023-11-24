@@ -4,7 +4,6 @@ const MAX_SCALE = 100;
 
 const minusButton = document.querySelector('.scale__control--smaller');
 const plusButton = document.querySelector('.scale__control--bigger');
-// const scalePanel = document.querySelector('.img-upload__scale');
 const scaleValue = document.querySelector('.scale__control--value');
 const uploadedImage = document.querySelector('.img-upload__preview img');
 
