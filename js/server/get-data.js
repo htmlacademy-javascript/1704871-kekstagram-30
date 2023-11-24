@@ -1,16 +1,10 @@
 const SEND_SERVER_URL = 'https://30.javascript.pages.academy/kekstagram/data';
 const ALERT_DURATION_TIME = 5000;
 
-import {initForm} from '../form/create-form.js';
 import {createMiniatures} from '../post/render-miniatures.js';
 
 const dataErrorTemplate = document.querySelector('#data-error').content;
 const dataError = dataErrorTemplate.querySelector('.data-error');
-
-const processData = (data) => {
-  createMiniatures(data);
-  initForm();
-};
 
 const hideErrorMessage = () => {
   setTimeout(() => {
@@ -23,10 +17,9 @@ const handleError = () => {
   hideErrorMessage();
 };
 
-const init = () => fetch(SEND_SERVER_URL)
+const getData = () => fetch(SEND_SERVER_URL)
   .then((response) => response.json())
-  .then((data) => processData(data))
-  .catch(() => handleError()
-  );
+  .then((data) => createMiniatures(data))
+  .catch(() => handleError());
 
-export {init};
+export {getData};

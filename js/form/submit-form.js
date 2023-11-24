@@ -1,4 +1,4 @@
-import { closeModal } from './create-form.js';
+import { closeModal, setSubmitButtonState } from './create-form.js';
 
 const SERVER_URL = 'https://30.javascript.pages.academy/kekstagram';
 
@@ -48,16 +48,16 @@ function closeMessageWin() {
   }
 }
 
-const onUploadSuccess = (response) => {
-  if (response.ok) {
-    document.body.insertAdjacentElement('beforeend', successMessage);
-    successButton.addEventListener('click', onSuccessBtnClick);
-    document.addEventListener('keydown', onDocumentKeyDown);
-    window.addEventListener('click', onWindowClick);
-  }
+const onUploadSuccess = () => {
+  setSubmitButtonState(false);
+  document.body.insertAdjacentElement('beforeend', successMessage);
+  successButton.addEventListener('click', onSuccessBtnClick);
+  document.addEventListener('keydown', onDocumentKeyDown);
+  window.addEventListener('click', onWindowClick);
 };
 
 const onUploadError = () => {
+  setSubmitButtonState(false);
   document.body.insertAdjacentElement('beforeend', errorMessage);
   errorButton.addEventListener('click', onErrorBtnClick);
   document.addEventListener('keydown', onDocumentKeyDown);
