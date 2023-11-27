@@ -8,6 +8,11 @@ const form = document.querySelector('#upload-select-image');
 const formUploadInput = document.querySelector('.img-upload__input');
 const formEdit = document.querySelector('.img-upload__overlay');
 const formCancelUploadButton = document.querySelector('.img-upload__cancel');
+const submitButton = document.querySelector('.img-upload__submit');
+
+const setSubmitButtonState = (state) => {
+  submitButton.disabled = state;
+};
 
 const onUploadCancelClick = () => {
   closeModal();
@@ -38,6 +43,7 @@ const onFormSubmit = (evt) => {
   evt.preventDefault();
   const isValid = pristineValidate();
   if (isValid) {
+    setSubmitButtonState(true);
     const formData = new FormData(evt.target);
     uploadFormData(formData);
   }
@@ -56,4 +62,4 @@ const initForm = () => {
   initSlider();
 };
 
-export { initForm, closeModal };
+export { initForm, closeModal, setSubmitButtonState };
