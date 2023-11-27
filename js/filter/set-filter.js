@@ -1,20 +1,52 @@
-// Функция взята из интернета и доработана
-// Источник - https://www.freecodecamp.org/news/javascript-debounce-example
+import {applyDefaultFilter, applyRandomFilter, applyDiscussedFilter} from './filter.js';
 
-function debounce (callback, timeoutDelay = 500) {
-  // Используем замыкания, чтобы id таймаута у нас навсегда приклеился
-  // к возвращаемой функции с setTimeout, тогда мы его сможем перезаписывать
-  let timeoutId;
+const filterDefault = document.querySelector('#filter-default');
+const filterRandom = document.querySelector('#filter-random');
+const filterDiscussed = document.querySelector('#filter-discussed');
+const filtersPanel = document.querySelector('.img-filters');
 
-  return (...rest) => {
-    // Перед каждым новым вызовом удаляем предыдущий таймаут,
-    // чтобы они не накапливались
-    clearTimeout(timeoutId);
+let serverImages = [];
+let currentImages = [];
 
-    // Затем устанавливаем новый таймаут с вызовом колбэка на ту же задержку
-    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+const resetFilterButtons = () => {
+  filterDefault.classList.remove('img-filters__button--active');
+  filterRandom.classList.remove('img-filters__button--active');
+  filterDiscussed.classList.remove('img-filters__button--active');
+};
 
-    // Таким образом цикл «поставить таймаут - удалить таймаут» будет выполняться,
-    // пока действие совершается чаще, чем переданная задержка timeoutDelay
-  };
-}
+const setButtonState = (evt) => {
+  resetFilterButtons();
+  evt.target.classList.add('img-filters__button--active');
+};
+
+const onDefaultFilterClick = (evt) => {
+  setButtonState(evt);
+  applyDefaultFilter(serverImages);
+};
+
+const onRandomFilterClick = (evt) => {
+  setButtonState(evt);
+  applyRandomFilter(currentImages);
+};
+
+const onDiscussedFilterClick = (evt) => {
+  setButtonState(evt);
+  applyDiscussedFilter(serverImages);
+};
+
+const addFilterListeners = () => {
+  filterDefault.addEventListener('click', onDefaultFilterClick);
+  filterRandom.addEventListener('click', onRandomFilterClick);
+  filterDiscussed.addEventListener('click', onDiscussedFilterClick);
+};
+
+const showFilterButtons = () => filtersPanel.classList.remove('img-filters--inactive');
+
+const setFilters = (data) => {
+  serverImages = data;
+  currentImages = serverImages.slice();
+  showFilterButtons();
+  addFilterListeners();
+};
+
+export {setFilters};
