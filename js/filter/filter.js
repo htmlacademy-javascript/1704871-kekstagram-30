@@ -28,5 +28,5 @@ const applyDiscussedFilter = (images) => {
   createMiniatures(sortMostDiscussed(images));
 };
 
-export {applyDefaultFilter, applyRandomFilter, applyDiscussedFilter};
+export {applyDefaultFilter, applyRandomFilter, applyDiscussedFilter, clearMiniatures};
 

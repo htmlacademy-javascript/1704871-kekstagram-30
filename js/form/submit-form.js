@@ -1,8 +1,9 @@
 import { closeModal, setSubmitButtonState } from './create-form.js';
+import {isEscape} from '../utils/utils.js';
 
 const SERVER_URL = 'https://30.javascript.pages.academy/kekstagram';
+const SEND_METHOD = 'POST';
 
-import {isEscape} from '../utils/utils.js';
 
 const successTemplate = document.querySelector('#success').content;
 const successMessage = successTemplate.querySelector('.success');
@@ -14,7 +15,7 @@ const successButton = successTemplate.querySelector('.success__button');
 const isSuccess = () => document.body.contains(successMessage);
 const isError = () => document.body.contains(errorMessage);
 
-const onWindowClick = (evt) => {
+const onDocumentClick = (evt) => {
   if ((!successMessage.contains(evt.target) || !errorMessage.contains(evt.target)) && (isSuccess() || isError())) {
     closeMessageWin();
   }
@@ -39,7 +40,7 @@ const onSuccessBtnClick = () => {
 function closeMessageWin() {
   errorButton.removeEventListener('click', onErrorBtnClick);
   document.removeEventListener('keydown', onDocumentKeyDown);
-  window.removeEventListener('click', onWindowClick);
+  document.removeEventListener('click', onDocumentClick);
 
   if (isSuccess()) {
     document.body.removeChild(successMessage);
@@ -53,7 +54,7 @@ const onUploadSuccess = () => {
   document.body.insertAdjacentElement('beforeend', successMessage);
   successButton.addEventListener('click', onSuccessBtnClick);
   document.addEventListener('keydown', onDocumentKeyDown);
-  window.addEventListener('click', onWindowClick);
+  document.addEventListener('click', onDocumentClick);
 };
 
 const onUploadError = () => {
@@ -61,13 +62,13 @@ const onUploadError = () => {
   document.body.insertAdjacentElement('beforeend', errorMessage);
   errorButton.addEventListener('click', onErrorBtnClick);
   document.addEventListener('keydown', onDocumentKeyDown);
-  window.addEventListener('click', onWindowClick);
+  document.addEventListener('click', onDocumentClick);
 };
 
 const uploadFormData = (formData) => fetch(
   SERVER_URL,
   {
-    method: 'POST',
+    method: SEND_METHOD,
     body: formData
   })
   .then((response) => onUploadSuccess(response))
