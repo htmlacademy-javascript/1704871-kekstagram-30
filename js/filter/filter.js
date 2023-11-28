@@ -29,4 +29,3 @@ const applyDiscussedFilter = (images) => {
 };
 
 export {applyDefaultFilter, applyRandomFilter, applyDiscussedFilter, clearMiniatures};
-
