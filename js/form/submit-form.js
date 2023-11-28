@@ -4,7 +4,6 @@ import {isEscape} from '../utils/utils.js';
 const SERVER_URL = 'https://30.javascript.pages.academy/kekstagram';
 const SEND_METHOD = 'POST';
 
-
 const successTemplate = document.querySelector('#success').content;
 const successMessage = successTemplate.querySelector('.success');
 const errorTemplate = document.querySelector('#error').content;
@@ -17,29 +16,29 @@ const isError = () => document.body.contains(errorMessage);
 
 const onDocumentClick = (evt) => {
   if ((!successMessage.contains(evt.target) || !errorMessage.contains(evt.target)) && (isSuccess() || isError())) {
-    closeMessageWin();
+    closeMessageWindow();
   }
 };
 
-const onDocumentKeyDown = (evt) => {
+const onDocumentKeydown = (evt) => {
   if (isEscape(evt) && (isSuccess() || isError())) {
     evt.preventDefault();
-    closeMessageWin();
+    closeMessageWindow();
   }
 };
 
-const onErrorBtnClick = () => {
+const onErrorButtonClick = () => {
   document.body.removeChild(errorMessage);
 };
 
-const onSuccessBtnClick = () => {
+const onSuccessButtonClick = () => {
   document.body.removeChild(successMessage);
   closeModal();
 };
 
-function closeMessageWin() {
-  errorButton.removeEventListener('click', onErrorBtnClick);
-  document.removeEventListener('keydown', onDocumentKeyDown);
+function closeMessageWindow() {
+  errorButton.removeEventListener('click', onErrorButtonClick);
+  document.removeEventListener('keydown', onDocumentKeydown);
   document.removeEventListener('click', onDocumentClick);
 
   if (isSuccess()) {
@@ -52,16 +51,16 @@ function closeMessageWin() {
 const onUploadSuccess = () => {
   setSubmitButtonState(false);
   document.body.insertAdjacentElement('beforeend', successMessage);
-  successButton.addEventListener('click', onSuccessBtnClick);
-  document.addEventListener('keydown', onDocumentKeyDown);
+  successButton.addEventListener('click', onSuccessButtonClick);
+  document.addEventListener('keydown', onDocumentKeydown);
   document.addEventListener('click', onDocumentClick);
 };
 
 const onUploadError = () => {
   setSubmitButtonState(false);
   document.body.insertAdjacentElement('beforeend', errorMessage);
-  errorButton.addEventListener('click', onErrorBtnClick);
-  document.addEventListener('keydown', onDocumentKeyDown);
+  errorButton.addEventListener('click', onErrorButtonClick);
+  document.addEventListener('keydown', onDocumentKeydown);
   document.addEventListener('click', onDocumentClick);
 };
 

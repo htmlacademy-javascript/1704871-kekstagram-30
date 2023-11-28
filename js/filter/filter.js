@@ -4,7 +4,7 @@ import {getRandomArrayElement} from '../utils/utils.js';
 const MIN_RANDOM_COUNT = 0;
 const MAX_RANDOM_COUNT = 10;
 
-const sortMostDiscussed = (images) => images.slice().sort((current, next) => current.comments.length < next.comments.length);
+const sortMostDiscussed = (images) => images.slice().sort((current, next) => next.comments.length - current.comments.length);
 
 const clearMiniatures = () => {
   const pictures = document.querySelectorAll('.picture');
@@ -29,4 +29,3 @@ const applyDiscussedFilter = (images) => {
 };
 
 export {applyDefaultFilter, applyRandomFilter, applyDiscussedFilter, clearMiniatures};
-
