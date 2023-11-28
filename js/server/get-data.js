@@ -4,7 +4,6 @@ import { setFilters } from '../filter/set-filter.js';
 const SEND_SERVER_URL = 'https://30.javascript.pages.academy/kekstagram/data';
 const ALERT_DURATION_TIME = 5000;
 
-
 const dataErrorTemplate = document.querySelector('#data-error').content;
 const dataError = dataErrorTemplate.querySelector('.data-error');
 

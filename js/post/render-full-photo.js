@@ -17,11 +17,11 @@ const commentsTotalCount = document.querySelector('.social__comment-total-count'
 let shownComments = 0;
 let comments = [];
 
-const onCancelClick = () => {
+const onCancelButtonClick = () => {
   hideModal();
 };
 
-const onEscapePress = (evt) => {
+const onDocumentKeydown = (evt) => {
   if (isEscape(evt)) {
     hideModal();
   }
@@ -47,7 +47,7 @@ const renderComments = (pictureComments) => {
   setButtonState();
 };
 
-const onLoadMoreCommentsBtnClick = () => {
+const onCommentsLoadButtonClick = () => {
   renderComments(comments);
   setButtonState();
 };
@@ -55,8 +55,8 @@ const onLoadMoreCommentsBtnClick = () => {
 function hideModal(){
   bigPicture.classList.add('hidden');
   document.body.classList.remove('modal-open');
-  cancelButton.removeEventListener('click', onCancelClick);
-  document.removeEventListener('keydown', onEscapePress);
+  cancelButton.removeEventListener('click', onCancelButtonClick);
+  document.removeEventListener('keydown', onDocumentKeydown);
   commentsLoadButton.classList.remove('hidden');
   shownComments = 0;
 }
@@ -64,9 +64,9 @@ function hideModal(){
 function showModal() {
   bigPicture.classList.remove('hidden');
   document.body.classList.add('modal-open');
-  commentsLoadButton.addEventListener('click', onLoadMoreCommentsBtnClick);
-  cancelButton.addEventListener('click', onCancelClick);
-  document.addEventListener('keydown', onEscapePress);
+  commentsLoadButton.addEventListener('click', onCommentsLoadButtonClick);
+  cancelButton.addEventListener('click', onCancelButtonClick);
+  document.addEventListener('keydown', onDocumentKeydown);
 }
 
 const createBigPicture = (picture) => {
