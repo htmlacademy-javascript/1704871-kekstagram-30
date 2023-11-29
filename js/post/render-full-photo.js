@@ -1,7 +1,7 @@
 
 import {isEscape} from '../utils/utils.js';
 
-const COMMENTS__SHOWN_COUNT = 5;
+const COMMENTS_SHOWN_COUNT = 5;
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureImg = document.querySelector('.big-picture__img img');
 const bigPictureLikes = document.querySelector('.likes-count');
@@ -41,8 +41,8 @@ const createComment = (comment) => {
 };
 
 const renderComments = (pictureComments) => {
-  pictureComments.slice(shownComments, shownComments + COMMENTS__SHOWN_COUNT).forEach((comment) => bigPictureComments.appendChild(createComment(comment)));
-  shownComments = Math.min(shownComments + COMMENTS__SHOWN_COUNT, pictureComments.length);
+  pictureComments.slice(shownComments, shownComments + COMMENTS_SHOWN_COUNT).forEach((comment) => bigPictureComments.appendChild(createComment(comment)));
+  shownComments = Math.min(shownComments + COMMENTS_SHOWN_COUNT, pictureComments.length);
   commentsShownCount.textContent = shownComments;
   setButtonState();
 };
